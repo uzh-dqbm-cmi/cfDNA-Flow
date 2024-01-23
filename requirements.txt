@@ -1,0 +1,45 @@
+pandas
+snakemake
+pyaml          # YAML 1.1
+# ruamel.yaml  # YAML 1.2
+samtools>=1.9
+openssl
+skewer
+bwa
+fastqc
+multiqc
+bedtools
+# pybedtools
+novoalign
+deeptools
+pyranges
+pybigwig
+ucsc-bedgraphtobigwig
+ucsc-fatotwobit
+gatk4
+sortedcontainers
+numpy
+numba
+openblas
+pysam
+bx-python
+joblib
+scipy
+statsmodels
+bismark
+bedops          # bedmap, sort-bed
+bowtie2
+samblaster  # probably using older samtools
+biopython
+logomaker
+# liquorice
+# ray
+jupyterlab
+notebook
+matplotlib
+seaborn
+parallel
+pytest
+pytest-flake8
+pytest-cov
+pytest-order

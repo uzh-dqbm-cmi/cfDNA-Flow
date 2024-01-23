@@ -1,0 +1,5 @@
+.idea/
+.snakemake/
+.pytest_cache/
+results/
+.Rproj.user

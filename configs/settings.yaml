@@ -1,0 +1,71 @@
+samples: ./test/data/test_samples.tsv
+control_samples: /data/control_samples.txt
+sampleDir: ./test/data/
+batch: cfDNA
+input_data_format: fastq
+correct_bias: True
+scripts: /scripts
+shendurelab_cfDNA: /shendurelab-cfDNA
+cfNOMe: /scripts
+anno_file: /scripts/data/transcriptAnno-v38-protein-coding-genes.body.tsv
+anno_name: genes_body
+temp:
+seed:
+
+# Split BAM files at the following fragment lengths, do GC bias correction, merge, sort:
+GCBias_correction_split: 150,250,350
+#GCBias_correction_split: "1:150","151:250","251:350","351:"
+
+#finale_db:
+#  replace_incomplete_nucleotides: true
+
+size_selection:
+  min: 90
+  max: 150
+
+copy_number_aberration:
+  bin_size: 1000
+  do_control_refs: TRUE # Whether to generate reference for control samples (every control vs all the rest of controls)
+
+ichorCNA:
+  ichor_bin_size: 1000000
+  ichor_qual: 20
+  ichor_pon: True
+  ichor_genome: hg38
+  gcwig: /scripts/data/gc_hg38_1000kb.wig
+  mapwig: /scripts/data/map_hg38_1000kb.wig
+  seqinfo: /scripts/data/chromInfo_hg38.txt
+  centromere: /scripts/data/GRCh38.GCA_000001405.2_centromere_acen.txt
+  normal: "c(0.5, 0.9, 0.95, 0.99, 0.995, 0.999)"
+  ploidy: "c(2)"
+  chrs: "c(1:22)"
+  chrTrain: "c(1:22)"
+  maxCN: 3
+
+wps:
+  window: 120
+  min: 120
+  max: 180
+  bigwig_normalized: false
+  bin_size: 10000
+  bin_normalization: mean
+
+fft:
+  binsize: 1000000
+  freq_from: 150
+  freq_to: 250
+  freq_sel: "193,196,199"
+
+# Mark Duplicates
+threads: 4
+MarkDuplicates:
+    ram: 4
+
+#LeoMed # deprecated
+leomed:
+  nodes: '16'
+  mem: '18000'
+  walltime: '120:00'
+  data: /cluster/dataset/medinfmk
+
+chromosomes: 'chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY'

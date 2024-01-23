@@ -1,0 +1,78 @@
+samples: test/test_samples.tsv
+control_samples: test/test_control_samples.txt
+sampleDir: test/data/
+batch: test003
+input_data_format: fastq
+correct_bias: false
+anno_file: ''
+anno_name: genome_wide
+
+Q: 30
+l: 50
+q: 35
+bwa_algorithm: mem
+MAPQ: 30
+SAM_flag: 256
+cigar_flag: D
+
+outputDir: results
+paramDir: FalseD25630
+projectName: test_cfDNA_pipeline
+
+refGenome: test/data/resources/sample_ref_4mb.fa
+chrom_sizes: scripts/data/hg38.chrom.sizes
+effective_genome_size: 2776919808
+genome_name: hg38
+genomeBit: test/data/resources/sample_ref_4mb.2bit
+blacklist: test/data/resources/sample_ref_15mb-blacklist.bed
+tag: ''
+
+threads: 2
+
+# Mark Duplicates
+MarkDuplicates:
+  ram: 8
+
+scripts: ./scripts
+shendurelab_cfDNA: /shendurelab-cfDNA
+cfNOMe: ./scripts
+
+size_selection:
+  min: 90
+  max: 150
+
+copy_number_aberration:
+  bin_size: 1000
+
+ichorCNA:
+  ichor_bin_size: 1000000
+  ichor_qual:
+  ichor_pon:
+  ichor_genome:
+  gcwig:
+  mapwig:
+  seqinfo:
+  centromere:
+  normal: "c(0.5, 0.95, 0.99, 0.995, 0.999)"
+  ploidy: "c(2)"
+  chrs: "c(20)"
+  chrTrain: "c(20)"
+  maxCN: 3
+
+wps:
+  window: 120
+  min: 120
+  max: 180
+  bigwig_normalized: false
+  bin_size: 1000
+  bin_normalization: mean
+
+fft:
+  binsize: 1000000
+  freq_from: 150
+  freq_to: 520
+  freq_sel: "193,196,199"
+
+chromosomes: 'chr20'
+temp: ./results/temp
+seed: 11

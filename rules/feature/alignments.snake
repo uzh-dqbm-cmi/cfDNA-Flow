@@ -1,0 +1,13 @@
+include: "../config.smk"
+WORKDIR = config["outputDir"]
+PARAMDIR = config["paramDir"]
+THREADS = config["threads"]
+
+rule bam_index:
+    """Generate a samtools index for any bam file"""
+    input: WORKDIR +"/BAM/"+PARAMDIR+"/{sample}.sortByCoord.bam"
+    output: WORKDIR +"/BAM/"+PARAMDIR+"/{sample}.sortByCoord.bai"
+    wildcard_constraints:
+        sample="[^/]+"
+    threads: THREADS
+    shell: "samtools index -@ {threads} {input} {output}"

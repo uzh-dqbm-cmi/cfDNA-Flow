@@ -1,0 +1,6 @@
+Job stats:
+job                 count    min threads    max threads
+----------------  -------  -------------  -------------
+cal_RefSample           1              1              1
+do_cal_RefSample        1              1              1
+total                   2              1              1

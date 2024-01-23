@@ -1,0 +1,85 @@
+samples: test/test_samples.tsv
+control_samples: test/test_control_samples.txt
+sampleDir: test/data/
+batch: test003
+input_data_format: finale_db
+correct_bias: false
+anno_file: scripts/data/transcriptAnno-v38-protein-coding-genes.body.tsv
+anno_name: genes_body
+
+Q: 30
+l: 50
+q: 35
+bwa_algorithm: mem
+MAPQ: 30
+SAM_flag: 256
+cigar_flag: D
+
+outputDir: results
+paramDir: FalseD25630
+projectName: test_cfDNA_pipeline
+
+refGenome: test/data/resources/sample_ref_4mb.fa
+chrom_sizes: scripts/data/hg38.chrom.sizes
+effective_genome_size: 2776919808
+genome_name: hg38
+genomeBit: test/data/resources/sample_ref_4mb.2bit
+blacklist: test/data/resources/sample_ref_15mb-blacklist.bed
+tag: ''
+
+threads: 2
+
+# Mark Duplicates
+MarkDuplicates:
+  ram: 8
+
+scripts: ./scripts
+shendurelab_cfDNA: /shendurelab-cfDNA
+cfNOMe: ./scripts
+
+finale_db:
+  replace_incomplete_nucleotides: true
+
+size_selection:
+  min:
+  max:
+
+copy_number_aberration:
+  bin_size: 1000
+  do_control_refs: TRUE
+
+ichorCNA:
+  ichor_bin_size: 1000000
+  ichor_qual: 20
+  ichor_pon: True
+  ichor_genome: hg38
+  gcwig: scripts/data/gc_hg38_1000kb.wig
+  mapwig: scripts/data/map_hg38_1000kb.wig
+  seqinfo: scripts/data/chromInfo_hg38.txt
+  centromere: scripts/data/GRCh38.GCA_000001405.2_centromere_acen.txt
+  normal: "c(0.5, 0.9, 0.95, 0.99, 0.995, 0.999)"
+  ploidy: "c(2)"
+  chrs: "c(1:22)"
+  chrTrain: "c(1:22)"
+  maxCN: 3
+  scStates: "TRUE"
+  estimateScPrevalence:
+
+wps:
+  window: 120
+  min: 150
+  max: 180
+  bigwig_normalized: false
+  bin_size: 1000
+  bin_normalization: mean
+
+fft:
+  binsize: 1000000
+  freq_from: 150
+  freq_to: 520
+
+chromosomes: chr20
+#chromosomes: chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY
+temp: ./results/temp
+
+seed: 11

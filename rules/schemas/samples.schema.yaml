@@ -1,0 +1,22 @@
+$schema: "http://json-schema.org/draft-06/schema#"
+
+sample:
+  type: string
+  description: sample name/identifier
+  fwq:
+    type: string
+    description: forward
+  rvr:
+    type: string
+    description: reverse
+  bam:
+    type: string
+    description: already aligned reads in BAM file
+  finale_db:
+    type: string
+    description: FinaleDB non-sensitive fragments data
+
+required:
+  - sample_name
+  - fwd
+  - rvr

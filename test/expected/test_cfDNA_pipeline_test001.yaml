@@ -1,0 +1,72 @@
+GCBias_correction_split: 150,250,350
+MAPQ: 30
+MarkDuplicates:
+  ram: 8
+Q: 30
+SAM_flag: false
+anno_file: /scripts/data/transcriptAnno-v38-protein-coding-genes.body.tsv
+anno_name: genes_body
+batch: test001
+binSize: 50000
+blacklist: ./resources/blacklist/hg38-blacklist.v2.bed
+bwa_algorithm: aln
+cfNOMe: /scripts
+chromosomes: chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22,chrX,chrY
+cigar_flag: false
+control_samples: /data/control_samples.txt
+copy_number_aberration:
+  bin_size: 1000
+  do_control_refs: true
+correct_bias: Frue
+effective_genome_size: 2805636331
+fft:
+  binsize: 1000000
+  freq_from: 150
+  freq_sel: 193,196,199
+  freq_to: 250
+genomeBit: ./resources/hg38.2bit
+ichorCNA:
+  centromere: /scripts/data/GRCh38.GCA_000001405.2_centromere_acen.txt
+  chrTrain: c(1:22)
+  chrs: c(1:22)
+  gcwig: /scripts/data/gc_hg38_1000kb.wig
+  ichor_bin_size: 1000000
+  ichor_genome: hg38
+  ichor_pon: true
+  ichor_qual: 20
+  mapwig: /scripts/data/map_hg38_1000kb.wig
+  maxCN: 3
+  normal: c(0.5, 0.9, 0.95, 0.99, 0.995, 0.999)
+  ploidy: c(2)
+  seqinfo: /scripts/data/chromInfo_hg38.txt
+input_data_format: fastq
+l: 50
+leomed:
+  data: /cluster/dataset/medinfmk
+  mem: '18000'
+  nodes: '16'
+  walltime: '120:00'
+outputDir: ./results
+paramDir: nono0
+projectName: test_cfDNA_pipeline
+q: 35
+refGenome: ./resources/resources_broad_hg38_v0_Homo_sapiens_assembly38.fasta
+sampleDir: ./test/data/
+samples: ./test/data/test_samples.tsv
+scripts: /scripts
+seed: ''
+shendurelab_cfDNA: /shendurelab-cfDNA
+size_selection:
+  max: 150
+  min: 90
+tag: XA
+temp: ./results/temp
+threads: 8
+u: true
+wps:
+  bigwig_normalized: false
+  bin_normalization: mean
+  bin_size: 10000
+  max: 180
+  min: 120
+  window: 120

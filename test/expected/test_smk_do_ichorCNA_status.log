@@ -1,0 +1,10 @@
+Job stats:
+job                 count    min threads    max threads
+----------------  -------  -------------  -------------
+createPoN               1              1              1
+createPoNWigs           1              1              1
+do_ichorCNA             1              1              1
+ichorCNA                2              1              1
+readCounter             2              1              1
+readCounterIndex        2              1              1
+total                   9              1              1

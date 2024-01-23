@@ -1,0 +1,6 @@
+Job stats:
+job               count    min threads    max threads
+--------------  -------  -------------  -------------
+do_mixed_model        1              1              1
+mixed_model           1              1              1
+total                 2              1              1

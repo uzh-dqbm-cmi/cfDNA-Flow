@@ -1,0 +1,6 @@
+Job stats:
+job                 count    min threads    max threads
+----------------  -------  -------------  -------------
+circle_finder           2              1              1
+do_circle_finder        1              1              1
+total                   3              1              1

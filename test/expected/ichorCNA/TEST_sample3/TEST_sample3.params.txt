@@ -1,0 +1,22 @@
+Sample	Tumor Fraction	Ploidy
+TEST_sample3	0	2.003
+
+
+TEST_sample3
+Gender:	male
+Tumor Fraction:	0
+Ploidy:	2.003
+Subclone Fraction:	NA
+Fraction Genome Subclonal:	0
+Fraction CNA Subclonal:	NaN
+Coverage:	NA
+ChrY coverage fraction:	0.002652
+ChrX median log ratio:	-0.9892
+Student's t mean: -0.31, -0.00072, 0.23, 0.43, 0.59, 0.72, 0.84
+Student's t precision: 1100, 2800, 1100, 1100, 1100, 1100, 1100
+Gamma Rate Init:	0.0018
+GC-Map correction MAD:	0.02823
+
+
+init	n_est	phi_est	BIC	Frac_genome_subclonal	Frac_CNA_subclonal	loglik
+n0.5-p2	1	2.003	NA	0	0	5160

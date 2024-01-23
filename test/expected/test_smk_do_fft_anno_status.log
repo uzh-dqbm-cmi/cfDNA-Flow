@@ -1,0 +1,6 @@
+Job stats:
+job            count    min threads    max threads
+-----------  -------  -------------  -------------
+do_fft_anno        1              1              1
+fft_anno           2              1              1
+total              3              1              1

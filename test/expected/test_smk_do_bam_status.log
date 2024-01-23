@@ -1,0 +1,12 @@
+Job stats:
+job                              count    min threads    max threads
+-----------------------------  -------  -------------  -------------
+baiRemdup                            2              1              1
+bam_split_GCBiasCorrect_merge        2              2              2
+do_bam                               1              1              1
+filterBams                           2              1              1
+markDuplicates                       2              1              1
+removeDuplicates                     2              1              1
+sortByCoord                          2              1              1
+sortByName                           2              1              1
+total                               15              1              2

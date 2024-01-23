@@ -1,0 +1,16 @@
+Job stats:
+job                        count    min threads    max threads
+-----------------------  -------  -------------  -------------
+bamToBed                       2              1              1
+bwaMem                         2              2              2
+do_preprocess                  1              1              1
+fastqc                         2              1              1
+filterBams                     2              1              1
+markDuplicates                 2              1              1
+multiqc                        1              1              1
+picardAlignmentMetrics         2              1              1
+picardCollectWgsMetrics        2              1              1
+removeDuplicates               2              1              1
+sortByName                     2              1              1
+trim                           2              1              1
+total                         22              1              2

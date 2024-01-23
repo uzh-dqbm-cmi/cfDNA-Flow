@@ -1,0 +1,268 @@
+BootStrap: docker
+From: togop/dna_toolbox:latest
+#From: bioconductor/bioconductor_docker:devel
+
+%files
+
+    ./cfDNA.py
+    ./configure.py
+    ./conftest.py
+    ./install_dependencies.sh
+    ./install_packages.R
+    ./pytest.ini
+    ./README.md
+    ./requirements.txt
+    ./run_all.sh
+    ./Snakefile
+    ./test_cfDNA.py
+    ./configs/example_config.yaml
+    ./configs/settings.yaml
+    ./rules/01_trim.smk
+    ./rules/02_align.smk
+    ./rules/03_clean_bams.smk
+    ./rules/04_bam_to_bed.smk
+    ./rules/05_feature_extract.smk
+    ./rules/common.smk
+    ./rules/circle_finder.smk
+    ./rules/config.smk
+    ./rules/copy_number_aberration.smk
+    ./rules/hgmm_fixedms.py
+    ./rules/hgmm_fixedms_bins.py
+    ./rules/do_ichorCNA_results.py
+    ./rules/ichor_cna.smk
+    ./rules/merge_results.py
+    ./rules/mixed_model.smk
+    ./rules/ndetective_logos.smk
+    ./rules/nucleosome_peak_calling.smk
+    ./rules/size_selection.smk
+    ./rules/feature/alignments.snake
+    ./rules/feature/anno.snake
+    ./rules/feature/fft.snake
+    ./rules/schemas/samples.schema.yaml
+    ./scripts/bam_split.sh
+    ./scripts/bedpe_size_selection.py
+    ./scripts/bedpe_size_selection.sh
+    ./scripts/CalcAverageWPS.sh
+    ./scripts/CalcWPSforCoordinate.sh
+    ./scripts/Call_peaks.py
+    ./scripts/Call_peaks.sh
+    ./scripts/circle_finder-pipeline-bwa-mem-samblaster.sh
+    ./scripts/create_config.py
+    ./scripts/createPanelOfNormals.R
+    ./scripts/fasterbedprocessing.py
+    ./scripts/fasterbedprocessing19.py
+    ./scripts/fft.R
+    ./scripts/fft.py
+    ./scripts/fft_bins.R
+    ./scripts/fft_plots.R
+    ./scripts/fft_to_bigWig.py
+    ./scripts/fragmentstein.sh
+    ./scripts/GenSamplesTSV.scala
+    ./scripts/global_length.py
+    ./scripts/merge_fft_freq.py
+    ./scripts/merge_hgmm_binned.py
+    ./scripts/mixedmodel.R
+    ./scripts/NDetective.py
+    ./scripts/runIchorCNA.R
+    ./scripts/R_spectrum.py
+    ./scripts/wps_to_bigWig.py
+    ./scripts/wps_to_bigWig.sh
+    ./scripts/helper/creating_configs.py
+    ./scripts/data/chromInfo_hg38.txt
+    ./scripts/data/protein_atlas/expression_labels.tsv
+    ./scripts/data/protein_atlas/RNAtable.tsv.gz
+    ./scripts/data/protein_atlas/tissue_key.tsv
+    ./scripts/data/gc_hg19_1000kb.wig
+    ./scripts/data/gc_hg38_1000kb.wig
+    ./scripts/data/GRCh37.p13_centromere_UCSC-gapTable.txt
+    ./scripts/data/GRCh38.GCA_000001405.2_centromere_acen.txt
+    ./scripts/data/hg19.chrom.sizes
+    ./scripts/data/hg38.chrom.sizes
+    ./scripts/data/map_hg19_1000kb.wig
+    ./scripts/data/map_hg38_1000kb.wig
+    ./scripts/data/transcriptAnno-GRCh37.75.body.tsv
+    ./scripts/data/transcriptAnno-v38-protein-coding-genes.body.tsv
+    ./scripts/helper/creating_configs.py
+    ./scripts/helper/get_samples.py
+    ./scripts/helper/initial_ML.py
+    ./scripts/helper/merged_fft_correlation.R
+    ./scripts/helper/pon_wigs.py
+    ./scripts/helper/sort_columns.R
+    ./scripts/tMAD/00_bedprocessing.R
+    ./scripts/tMAD/01_cal_blacklist.R
+    ./scripts/tMAD/02_cal_RefSample.R
+    ./scripts/tMAD/03_BeforeSegmentation.R
+    ./scripts/tMAD/04_DoSegmentation.R
+    ./scripts/tMAD/05_cal_t_MAD.R
+    ./scripts/tMAD/05_cal_t_MAD_forall.R
+    ./scripts/tMAD/06_Visualizing.R
+    ./scripts/tMAD/06_visualizing_forall.R
+    ./test/smk_test_samples.tsv
+    ./test/sif/test_cfDNA_pipeline.yaml /test/
+    ./test/sif/test_cfDNA_pipeline_GCbias.yaml /test/
+    ./test/sif/test_cfDNA_pipeline_szsel.yaml /test/
+    ./test/test_config.yaml
+    ./test/test_control_samples.txt
+    ./test/test_samples.tsv
+    ./test/test_samples_2.tsv
+    ./test/data/BED/test_sample2.bed
+    ./test/data/resources/sample_ref_4mb.fa
+    ./test/data/resources/sample_ref_4mb.fa.amb
+    ./test/data/resources/sample_ref_4mb.fa.ann
+    ./test/data/resources/sample_ref_4mb.fa.bwt
+    ./test/data/resources/sample_ref_4mb.fa.fai
+    ./test/data/resources/sample_ref_4mb.fa.pac
+    ./test/data/resources/sample_ref_4mb.fa.sa
+    ./test/data/resources/sample_ref_4mb.2bit
+    ./test/data/resources/sample_ref_15mb-blacklist.bed
+    ./test/data/test_sample1_R1.fastq.gz
+    ./test/data/test_sample1_R2.fastq.gz
+    ./test/data/test_sample2.bam
+    ./test/data/test_sample2.bam.bai
+    ./test/data/test_sample3_R1.fastq.gz
+    ./test/data/test_sample3_R2.fastq.gz
+    ./test/expected/ichorCNA/TEST_sample1/TEST_sample1.cna.seg
+    ./test/expected/ichorCNA/TEST_sample1/TEST_sample1.correctedDepth.txt
+    ./test/expected/ichorCNA/TEST_sample1/TEST_sample1.params.txt
+    ./test/expected/ichorCNA/TEST_sample1/TEST_sample1.RData
+    ./test/expected/ichorCNA/TEST_sample1/TEST_sample1.seg
+    ./test/expected/ichorCNA/TEST_sample1/TEST_sample1.seg.txt
+    ./test/expected/ichorCNA/TEST_sample3/TEST_sample3.cna.seg
+    ./test/expected/ichorCNA/TEST_sample3/TEST_sample3.correctedDepth.txt
+    ./test/expected/ichorCNA/TEST_sample3/TEST_sample3.params.txt
+    ./test/expected/ichorCNA/TEST_sample3/TEST_sample3.RData
+    ./test/expected/ichorCNA/TEST_sample3/TEST_sample3.seg
+    ./test/expected/ichorCNA/TEST_sample3/TEST_sample3.seg.txt
+    ./test/expected/ichorCNA/ichorCNA_results.tsv
+    ./test/expected/ichorCNA/pon_wigs.txt
+    ./test/expected/ichorCNA/TEST_sample1.wig
+    ./test/expected/ichorCNA/TEST_sample3.wig
+    ./test/expected/microDNA/TEST_sample1.concordant_freqGr3.txt
+    ./test/expected/microDNA/TEST_sample3.disc.txt
+    ./test/expected/mixmod/hgmm_bins_TEST_sample1.tsv
+    ./test/expected/mixmod/hgmm_bins_TEST_sample3.tsv
+    ./test/expected/sif/all_results.tsv /test/expected/
+    ./test/expected/sif/mixmod_results.tsv /test/expected/
+    ./test/expected/szsel_90_150/mergeddf.csv
+    ./test/expected/szsel_90_150/test_smk_do_bedprocess_status_szsel.log
+    ./test/expected/global_length.tsv
+    ./test/expected/hgmm_results.tsv
+    ./test/expected/mergeddf.csv
+    ./test/expected/test_cfDNA_pipeline_test001.yaml
+    ./test/expected/test_sample2.wps
+    ./test/expected/test_sample2_szsel.bed
+    ./test/expected/test_smk_do_bedprocess_status.log
+    ./test/expected/test_smk_do_cal_t_MAD_forall_status.log
+    ./test/expected/test_smk_do_circle_finder_status.log
+    ./test/expected/test_smk_do_fft_bins_status.log
+    ./test/expected/test_smk_do_fft_bins_py_status.log
+    ./test/expected/test_smk_do_fft_anno_status.log
+    ./test/expected/test_smk_do_fft_anno_plots_status.log
+    ./test/expected/test_smk_do_fft_to_bigWig_status.log
+    ./test/expected/test_smk_do_global_length_status.log
+    ./test/expected/test_smk_do_hgmm_bins_status.log
+    ./test/expected/test_smk_do_hgmm_status.log
+    ./test/expected/test_smk_do_ichorCNA_results_status.log
+    ./test/expected/test_smk_do_ichorCNA_status.log
+    ./test/expected/test_smk_do_merge_results_status.log
+    ./test/expected/test_smk_do_mixed_model_status.log
+    ./test/expected/test_smk_do_ndetective_logos_status.log
+    ./test/expected/test_smk_do_preprocess_status.log
+    ./test/expected/test_smk_do_uniq_counts_status.log
+    ./test/expected/test_smk_do_wps_status.log
+    ./test/expected/test_smk_do_wps_to_bigWig_bins_status.log
+    ./test/expected/test_smk_do_wps_to_bigWig_status.log
+    ./test/expected/test_smk_tMAD_do_cal_blacklist_status.log
+    ./test/expected/test_smk_tMAD_do_cal_RefSample_status.log
+    ./test/expected/tMAD_results.tsv
+    ./test/expected/uniqcounts.tsv
+    ./test/singularity_images/cfDNA_pipeline.sif
+
+%environment
+
+     SINGULARITYENV_APPEND_PATH=/:/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt:/hmmcopy_utils/bin
+     export SINGULARITYENV_APPEND_PATH
+     export SINGULARITYENV_LD_LIBRARY_PATH=/usr/local/lib/
+
+%post
+    apt-get update -y
+#    apt-get install -y parallel
+#    # apt-get install -y libssl-dev
+#    apt-get install -y git
+#    # give all files 774 and directories 775 by default
+#    umask 000
+#    git clone https://github.com/broadinstitute/ichorCNA.git /ichorCNA
+#
+#    apt-get install curl
+#    ## 3.9: https://repo.anaconda.com/miniconda/Miniconda3-py39_4.9.2-Linux-x86_64.sh
+#    curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o Miniconda3-latest-Linux-x86_64.sh
+#    chmod +x Miniconda3-latest-Linux-x86_64.sh
+#    ./Miniconda3-latest-Linux-x86_64.sh -b -p /opt/miniconda3
+
+    PATH=/opt/miniconda3/bin:$PATH
+
+    # take too much time, avoid if not needed
+    # conda update -n base -c defaults conda
+
+#    conda config --add channels conda-forge
+#    conda config --add channels bioconda
+#    conda config --add channels r
+#    conda update --all
+#
+#    conda install --file requirements.txt # done in the dna_toolbox
+    conda install -c conda-forge statsmodels    # TODO move to the dna_toolbox Docker image
+#    conda install -c bioconda pybedtools
+    # since snakemake 7.0.1 it looks this dependency is missed
+    # conda install -y retry
+
+    git clone https://github.com/uzh-dqbm-cmi/shendurelab-cfDNA /shendurelab-cfDNA
+
+    git clone https://github.com/orisenbazuru/histogram_gmm.git -b fixed_mean /histogram_gmm
+    pip install -e /histogram_gmm
+
+    git clone https://github.com/shahcompbio/hmmcopy_utils.git /hmmcopy_utils
+    cd /hmmcopy_utils
+    cmake .
+    make
+    cd ..
+    # or: conda install -c dranew hmmcopy_utils
+
+    # git clone https://github.com/FlorianErger/cfNOMe /cfNOMe # all we need is in our script folder
+
+    R -f install_packages.R  # install extra: rest done in the dna_toolbox
+
+#    mkdir -p /opt/data
+#    apt-get autoremove -y
+#    apt-get clean
+    echo 'export PATH=$SINGULARITYENV_APPEND_PATH:$PATH' >>$SINGULARITY_ENVIRONMENT
+
+# %runscript
+#
+# %startscript
+
+%test
+    # packages integrity tests
+    samtools --version | if  grep -q "Samtools compilation details" ; then echo "samtools install OK"; else echo "ERROR: samtools install failed" && exit 1; fi
+    skewer --help | if  grep -q "USAGE:" ; then echo "skewer install OK"; else echo "ERROR: skewer install failed" && exit 1; fi
+    fastqc --help | if  grep -q "A high throughput sequence QC analysis tool" ; then echo "fastqc install OK"; else echo "ERROR: fastqc install failed" && exit 1; fi
+    multiqc --help | if  grep -q "Usage:" ; then echo "multiqc install OK"; else echo "ERROR: multiqc install failed" && exit 1; fi
+    bedtools --help | if  grep -q "Usage:" ; then echo "bedtools install OK"; else echo "ERROR: bedtools install failed" && exit 1; fi
+    deeptools --help | if  grep -q "usage:" ; then echo "deeptools install OK"; else echo "ERROR: deeptools install failed" && exit 1; fi
+    # bedGraphToBigWig | if  grep -q "usage:" ; then echo "bedGraphToBigWig install OK"; else echo "ERROR: bedGraphToBigWig install failed" && exit 1; fi
+    gatk --help | if  grep -q "Usage" ; then echo "gatk install OK"; else echo "ERROR: gatk install failed" && exit 1; fi
+    bismark --help | if  grep -q "USAGE:" ; then echo "bismark install OK"; else echo "ERROR: bismark install failed" && exit 1; fi
+    bedops --help | if  grep -q "USAGE:" ; then echo "bedops install OK"; else echo "ERROR: bedops install failed" && exit 1; fi
+    bowtie2 --help | if  grep -q "Usage:" ; then echo "bowtie2 install OK"; else echo "ERROR: bowtie2 install failed" && exit 1; fi
+    # bwa mem | if  grep -q "Usage:" ; then echo "bwa install OK"; else echo "ERROR: bwa install failed" && exit 1; fi
+    # singularity shell -H $HOME ./cfDNA_pipeline.sif
+    # pytest -q --inst_folder / /test_cfDNA.py
+    # snakemake -s Snakefile --configfile test/test_cfDNA_pipeline.yaml -j 2 do_preprocess -np
+    # /test_cfDNA.py  # cannot create results folder
+    # pytest -q --inst_folder / /test_cfDNA.py::test_smk_do_preprocess
+
+%labels
+    Author https://krauthammerlab.ch/
+    Version v0.0.2
+
+%help
+    Pipeline and tools for performing cf-DNA data processing and analysis.

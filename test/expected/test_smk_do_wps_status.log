@@ -1,0 +1,8 @@
+Job stats:
+job            count    min threads    max threads
+-----------  -------  -------------  -------------
+bam_index          2              2              2
+do_wps             1              1              1
+sortByCoord        2              1              1
+wps                2              1              1
+total              7              1              2

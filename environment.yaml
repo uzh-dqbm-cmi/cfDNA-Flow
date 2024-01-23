@@ -1,0 +1,43 @@
+name: cfDNA_pipeline
+channels:
+  - defaults
+  - conda-forge
+  - bioconda
+  - r
+dependencies:
+  - pandas
+  - snakemake
+  - pyaml          # YAML 1.1
+  # ruamel.yaml  # YAML 1.2
+  - samtools>=1.9
+  - openssl
+  - skewer
+  - bwa
+  - fastqc
+  - multiqc
+  - bedtools
+  - novoalign
+  - deeptools # downgrading numpy!
+  - pyranges
+  - pybigwig # downgrading samtools!!!
+  - ucsc-bedgraphtobigwig  # downgrading many!!!!
+  - ucsc-fatotwobit
+  - gatk4 # downgrading openjdk to 20.0.0 -> 17.0.3 !
+  - sortedcontainers
+  - numpy
+  - pysam
+  - bx-python
+  - joblib
+  - scipy
+  - bismark
+  # bedmap, sort-bed
+  - bedops
+  - bowtie2
+  - jupyterlab
+  - notebook
+  - matplotlib # downgrading openjdk, alsa-lib
+  - seaborn
+  - pytest
+  - pytest-flake8
+  - pytest-cov
+  - pytest-order

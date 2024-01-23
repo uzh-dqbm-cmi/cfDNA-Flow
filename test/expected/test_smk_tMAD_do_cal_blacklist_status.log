@@ -1,0 +1,6 @@
+Job stats:
+job                 count    min threads    max threads
+----------------  -------  -------------  -------------
+cal_blacklist           1              1              1
+do_cal_blacklist        1              1              1
+total                   2              1              1

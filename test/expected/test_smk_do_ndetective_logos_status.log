@@ -1,0 +1,6 @@
+Job stats:
+job                    count    min threads    max threads
+-------------------  -------  -------------  -------------
+do_ndetective_logos        1              1              1
+ndetective_logos           2              1              1
+total                      3              1              1

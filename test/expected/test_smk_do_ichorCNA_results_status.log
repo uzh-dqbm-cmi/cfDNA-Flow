@@ -1,0 +1,6 @@
+Job stats:
+job                    count    min threads    max threads
+-------------------  -------  -------------  -------------
+do_ichorCNA_results        1              1              1
+ichorCNA_results           1              1              1
+total                      2              1              1

@@ -1,0 +1,6 @@
+Job stats:
+job                 count    min threads    max threads
+----------------  -------  -------------  -------------
+do_wps_to_bigWig        1              1              1
+wps_to_bigWig           2              1              1
+total                   3              1              1

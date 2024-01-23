@@ -1,0 +1,7 @@
+Job stats:
+job               count    min threads    max threads
+--------------  -------  -------------  -------------
+do_uniq_counts        1              1              1
+len_uniq_count        2              1              1
+uniq_counts           1              1              1
+total                 4              1              1

@@ -1,0 +1,6 @@
+Job stats:
+job                 count    min threads    max threads
+----------------  -------  -------------  -------------
+do_merge_results        1              1              1
+merge_results           1              1              1
+total                   2              1              1
