@@ -1,4 +1,4 @@
-# cfDNA preprocessing pipeline
+# cfDNA-Flow
 
 ## Running the pipeline
 `snakemake --configfile /cluster/dataset/medinfmk/pipeline-cfDNA/results/0memhg19decoy/0memhg19decoyTrue40-020210115.yaml -j16 preprocess`
