@@ -4,7 +4,8 @@
 ## 1. Overview
 cfDNA-Flow facilitates the accurate and reproducible analysis of cfDNA WGS data. It offers various preprocessing options to accommodate different experimental setups and research needs in the field of liquid biopsies. 
 
-![](/Users/ivna/00_projects/cfDNA-Flow/workflow.png)
+![](https://github.com/uzh-dqbm-cmi/cfDNA-Flow/blob/main/workflow.png)
+
 
 ## 2. Preprocessing options
 ### 2.1 Trimming Options
@@ -14,7 +15,7 @@ cfDNA-Flow provides the flexibility to either trim or not trim the input reads b
 Users can choose from the following genome builds: hg19, hg38, hg19decoy, and hg38noalt.
 
 ### 2.3 Post-Alignment Filtering and GC bias correction
-The pipeline utilizes the BWA-MEM software for alignment, followed by extensive post-alignment filtering steps to ensure reliable alignments. Users can define specific filtering criteria to remove low-quality or ambiguous reads, such as secondary alignments, reads with insertion or deletion, and reads with low mapping qualities. Additionally, the pipeline offers an option to correct for GC bias.
+The pipeline uses the BWA software for alignment, followed by extensive post-alignment filtering steps to ensure reliable alignments. Users can define specific filtering criteria to remove low-quality or ambiguous reads, such as secondary alignments, reads with insertion or deletion, and reads with low mapping qualities. Additionally, the pipeline offers an option to correct for GC bias.
 
 ## 3. Usage
 To use cfDNA-Flow, follow these steps:
