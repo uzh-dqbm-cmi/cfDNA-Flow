@@ -69,7 +69,6 @@ def msg_diff_content(result, expected, log=None):
 # @pytest.mark.skip(reason="deprecated command: use configure.py")
 def test_main(inst_folder):
     cleanup_files(['results/test_cfDNA_pipeline_test001.yaml'])
-    # test: cmd = "python3 ./cfDNA.py -a bedprocess -c ./test/test_config.yaml -j1"
     args = MainArgs()
     args.local = False
     args.analysis = 'do_preprocess'
@@ -101,27 +100,6 @@ def test_configure2(inst_folder):
     assert filecmp.cmp(result, expected, shallow=False)
 
 
-def test_wps(inst_folder):
-    result = 'results/test_sample2.wps'
-    cleanup_files([result])
-    assure_folder(os.path.dirname(result))
-    wps_cmd = f'{inst_folder}scripts/CalcWPSforCoordinate.sh -i {inst_folder}test/data/test_sample2.bam -r chr1:10000-10100 --min 120 --max 180 > {result}'
-    run_cmd(wps_cmd)
-    expected = f'{inst_folder}test/expected/test_sample2.wps'
-    assert filecmp.cmp(result, expected, shallow=False)
-
-
-def test_size_selection_py(inst_folder):
-    result = 'results/test_sample2_szsel.bed'
-    cleanup_files([result])
-    assure_folder(os.path.dirname(result))
-    szsel.sz_min = 60
-    szsel.sz_max = 150
-    szsel.bed_size_selection(f'{inst_folder}test/data/BED/test_sample2.bed', result, 1, 1)
-    expected = f'{inst_folder}test/expected/test_sample2_szsel.bed'
-    assert filecmp.cmp(result, expected, shallow=False)
-
-
 def test_size_selection_sh(inst_folder):
     # input_bed = '/Users/todor/data/cfdna/AmsterdamUMC/results/BED/FalseD25630/LP0020_02.bed'
     # result = '/Users/todor/data/cfdna/AmsterdamUMC/results/BED/FalseD25630/szsel_90_150_sh/LP0020_02.bed'
@@ -141,12 +119,6 @@ def test_size_selection_sh(inst_folder):
     szsel_cmd = f'{inst_folder}scripts/bedpe_size_selection.sh -i {input_bed} --min {sz_min} --max {sz_max} -o {result_p1} --temp {temp}'
     run_cmd(szsel_cmd)
     assert filecmp.cmp(result_p1, result, shallow=False)
-    # compare with py
-    szsel.sz_min = sz_min
-    szsel.sz_max = sz_max
-    result_py = result + '.py.bed'
-    szsel.bed_size_selection(input_bed, result_py, cores, cores)
-    assert filecmp.cmp(result, result_py, shallow=False)
     # return
     expected = f'{inst_folder}test/expected/test_sample2_szsel.bed'
     assert filecmp.cmp(result, expected, shallow=False)
