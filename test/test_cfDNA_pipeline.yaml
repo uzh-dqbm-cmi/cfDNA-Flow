@@ -41,8 +41,8 @@ finale_db:
   replace_incomplete_nucleotides: true
 
 size_selection:
-  min: 90
-  max: 150
+  min:
+  max:
 
 copy_number_aberration:
   bin_size: 1000

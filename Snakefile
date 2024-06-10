@@ -125,6 +125,21 @@ rule do_preprocess:
 #         WORKDIR + "/QC/trimmed_reads/" + PARAMDIR + "/multiqc_report.html",
 #         WORKDIR + "/QC/Picard/" + PARAMDIR + "/multiqc_report.html"
 
+rule do_bedprocess:
+    input:
+        expand(WORKDIR+"/BED/"+PARAMDIR+"/"+SIZE_SELECTION_SUB_FOLDER+"{sample}_len.csv", sample=samples['sample_name'].values),
+        expand(WORKDIR + "/BED/" + PARAMDIR + "/"+SIZE_SELECTION_SUB_FOLDER+"{sample}_point.csv",sample=samples['sample_name'].values),
+        WORKDIR + "/BED/" + PARAMDIR + "/"+SIZE_SELECTION_SUB_FOLDER+"mergeddf.csv"
+
+rule do_uniq_counts:
+    input:
+        WORKDIR+"/BED/"+PARAMDIR+"/"+SIZE_SELECTION_SUB_FOLDER+"uniqcounts.tsv"
+
+rule do_global_length:
+    input:
+        WORKDIR + "/feature/" + PARAMDIR + "/" + SIZE_SELECTION_SUB_FOLDER + "global_length.tsv"
+
+
 # tMAD
 
 rule do_cal_blacklist:  # tMAD 1

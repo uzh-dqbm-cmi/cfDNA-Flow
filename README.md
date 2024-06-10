@@ -27,7 +27,26 @@ To use cfDNA-Flow, follow these steps:
         Edit the configuration file to specify the input files, reference genome, and desired preprocessing options.
         Customize the trimming, alignment, and filtering settings as needed.
 ### 3.3 Execution/Demo:
-        Run the pipeline...
+To start preprocessing, execute the following command. Use the -np flag for a dry run to verify everything works correctly.
+
+        snakemake -s Snakefile --configfile test/test_cfDNA_pipeline.yaml -j 2 do_preprocess -np 
+
+If successful, rerun the command without the -np flag.
+
+        snakemake -s Snakefile --configfile test/test_cfDNA_pipeline.yaml -j 2 do_preprocess 
+
+Next, bed to process BED files, use:
+
+        snakemake -s Snakefile --configfile test/test_cfDNA_pipeline.yaml -j 2 do_bedprocess
+        
+Do unique counts:
+snakemake -s Snakefile --configfile test/test_cfDNA_pipeline.yaml -j 2 do_uniq_counts
+
+Do global length: 
+snakemake -s Snakefile --configfile test/test_cfDNA_pipeline.yaml -j 2 do_global_length
+
+
+
 ### 3.4 Output:
         The pipeline outputs processed reads, alignment files (BAM files, BED files), and comprehensive quality control reports.
 
