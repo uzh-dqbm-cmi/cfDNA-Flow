@@ -1,6 +1,9 @@
 # Title     : Install R package dependencies
 # Objective : prepare environment to run the R scripts in this project
 
+# Set the CRAN mirror
+options(repos = c(CRAN = "https://cloud.r-project.org"))
+
 install_dependencies <- function(packages) for (package in packages) if (!requireNamespace(package, quietly = TRUE)) install.packages(package, quietly = TRUE, dependencies = TRUE, force = TRUE) else print(paste("Package", package, " already installed."))
 
 if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager", quietly = TRUE)
@@ -21,7 +24,7 @@ install_jypiter_dependencies <- function (packages) {
 
 install_dependencies(packages = c("dplyr", "Seurat", "reshape", "data.table", "readr", "hash", "ggplot2","scales",
                                    "RColorBrewer", "gridExtra", "grid", "gtable", "plotly", "gridExtra","optparse",
-                                   "CNAclinic", "devtools", "this.path", "shiny", "openssl", "plotmm", "mixtools", "EMCluster",
+                                   "devtools", "this.path", "shiny", "openssl", "plotmm", "mixtools", "EMCluster",
                                    "flexmix", "tidyverse", "icesTAF", "parallel",  "doParallel", "doMC", "doFuture", "plyr")) # , "Rdsm"
 install_Bioc_dependencies(packages = c("org.Hs.eg.db", "TxDb.Hsapiens.UCSC.hg19.knownGene",
                                         "TxDb.Hsapiens.UCSC.hg38.knownGene", "QDNAseq.hg19", "QDNAseq.hg38", "BSgenome.Hsapiens.UCSC.hg38",
