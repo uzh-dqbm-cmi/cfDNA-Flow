@@ -4,6 +4,8 @@
 ## 1. Overview
 cfDNA-Flow facilitates the accurate and reproducible analysis of cfDNA WGS data. It offers various preprocessing options to accommodate different experimental setups and research needs in the field of liquid biopsies. 
 
+![](https://github.com/uzh-dqbm-cmi/cfDNA-Flow/blob/main/workflow.png)
+
 ## 2. Preprocessing options
 ### 2.1 Trimming Options
 cfDNA-Flow provides the flexibility to either trim or not trim the input reads based on the user's requirements. Trimming removes low-quality bases, which can impact downstream analyses.
@@ -52,11 +54,11 @@ After following these steps, your environment should be set up with all the nece
 
 Once you are finished using cfDNA-Flow, deactivate the virtual environment by running:
 
-    deactivate
+        deactivate
 
 ### 4.2 Configuration:
-        Edit the configuration file to specify the input files, reference genome, and desired preprocessing options.
-        Customize the trimming, alignment, and filtering settings as needed.
+The configuration file, `test_cfDNA_pipeline.yaml`, is used to specify the input files, reference genome, and desired preprocessing options. User can customize the trimming, alignment, and filtering settings as needed.
+Settings for this demo are as follows: reads are trimmed, reference genome is hg38, mapping quality is 30, [SAM flag](https://broadinstitute.github.io/picard/explain-flags.html) is 256, CIGAR string is D. 
 
 ### 4.3 Execution/Demo:
 To start preprocessing, execute the following command. Use the -np flag for a dry run to verify everything works correctly.
@@ -92,9 +94,8 @@ Do ichorCNA:
         snakemake -s Snakefile --configfile test/test_cfDNA_pipeline.yaml -j 2 do_ichorCNA
         snakemake -s Snakefile --configfile test/test_cfDNA_pipeline.yaml -j 2 do_ichorCNA_results
 
-
 ### 4.4 Output:
-The pipeline outputs processed reads, alignment files (BAM files, BED files), and comprehensive quality control reports.
+The pipeline outputs processed reads, alignment files (BAM files, BED files), and quality control reports.
 
 ## 5. Support
 For issues, questions, or contributions, please visit the cfDNA-Flow GitHub repository or contact the maintainers via email. 

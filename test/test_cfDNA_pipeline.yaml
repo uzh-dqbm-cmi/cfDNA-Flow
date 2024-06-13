@@ -7,18 +7,33 @@ correct_bias: false
 anno_file: scripts/data/transcriptAnno-v38-protein-coding-genes.body.tsv
 anno_name: genes_body
 
+# trimming parameters for skewer
+
+#The lowest mean quality value allowed before trimming
 Q: 30
+#The minimum read length allowed after trimming
 l: 50
+# Trim 3' end until specified or higher quality reached
 q: 35
+
+# alignment algorithm
 bwa_algorithm: mem
+# mapping quality
 MAPQ: 30
+
+# SAM flag
 SAM_flag: 256
+# cigar flag
 cigar_flag: D
 
+# name of the output directory
 outputDir: results
+
+# name of the directory, keeping track of preprocessing settings used
 paramDir: FalseD25630
 projectName: test_cfDNA_pipeline
 
+# modify according to the choice of the reference genome
 refGenome: test/data/resources/sample_ref_4mb.fa
 chrom_sizes: scripts/data/hg38.chrom.sizes
 effective_genome_size: 2776919808
@@ -48,6 +63,7 @@ copy_number_aberration:
   bin_size: 1000
   do_control_refs: TRUE
 
+# ichorCNA - the details for usage and parameter tuning https://github.com/broadinstitute/ichorCNA/wiki
 ichorCNA:
   ichor_bin_size: 1000000
   ichor_qual: 20
