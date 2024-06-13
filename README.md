@@ -4,9 +4,6 @@
 ## 1. Overview
 cfDNA-Flow facilitates the accurate and reproducible analysis of cfDNA WGS data. It offers various preprocessing options to accommodate different experimental setups and research needs in the field of liquid biopsies. 
 
-![](https://github.com/uzh-dqbm-cmi/cfDNA-Flow/blob/main/workflow.png)
-
-
 ## 2. Preprocessing options
 ### 2.1 Trimming Options
 cfDNA-Flow provides the flexibility to either trim or not trim the input reads based on the user's requirements. Trimming removes low-quality bases, which can impact downstream analyses.
@@ -30,19 +27,32 @@ cfDNA-Flow utilizes two copy number analysis tools: ichorCNA (v0.2.0) and tMAD, 
 cfDNA-Flow splits the genome into 1-Mbp bins and counts the number of fragments in each region. It then scales the 1-Mbp bin-wise fragment counts by dividing them by the average number of fragments across all bins. This scaled coverage is used to calculate Pearson’s correlation between healthy and cancer samples. When calculating the correlation of the coverage of a healthy sample to the average coverage of healthy samples, the given healthy sample is excluded from the average.
 
 ### 3.4 Differential coverage analysis over DNase hypersensitivity sites
-https://liquorice.readthedocs.io/en/latest/
+This feature was calculated using [LIQUORICE](https://github.com/epigen/LIQUORICE/tree/master). Please note that the cfDNA-Flow pipeline does not integrate the LIQUORICE tool for detecting epigenetic signatures in cell-free DNA from liquid biopsies. However, you can find more information and access LIQUORICE through the following [link](https://liquorice.readthedocs.io/en/latest/).
 
 ## 4. Usage
 To use the cfDNA-Flow, follow these steps:
 
 ### 4.1 Installation:
-Clone the cfDNA-Flow repository from GitHub.
+Clone the cfDNA-Flow repository from GitHub to your local machine.
 
-Install required python dependencies:
+        git clone https://github.com/uzh-dqbm-cmi/cfDNA-Flow.git
+        cd cfDNA-Flow
 
-Install required R packages:
+It is recommended to create a virtual environment to manage the project's dependencies. This ensures that the dependencies do not interfere with other Python projects on your machine. See how to create a Python environment [here](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/).
 
-    R -f install_packages.R  
+Once the virtual environment is activated, install the required Python dependencies using the `requirements.txt` file.
+
+        pip install -r requirements.txt
+
+Additionally, some R packages are required for the project. Make sure you have R installed (version 4.3). You can install these packages by running the script below:
+
+        R -f install_packages.R
+
+After following these steps, your environment should be set up with all the necessary dependencies for both Python and R. You are now ready to proceed with using the cfDNA-Flow pipeline. See section 4. Usage. 
+
+Once you are finished using cfDNA-Flow, deactivate the virtual environment by running:
+
+    deactivate
 
 ### 4.2 Configuration:
         Edit the configuration file to specify the input files, reference genome, and desired preprocessing options.
@@ -69,9 +79,19 @@ Do global length:
 
         snakemake -s Snakefile --configfile test/test_cfDNA_pipeline.yaml -j 2 do_global_length
 
-Do tMAD
+Do tMAD:
 
-Do ichorCNA
+        snakemake -s Snakefile --configfile test/test_cfDNA_pipeline.yaml -j 2 do_cal_blacklist
+        snakemake -s Snakefile --configfile test/test_cfDNA_pipeline.yaml -j 2 do_cal_RefSample
+        snakemake -s Snakefile --configfile test/test_cfDNA_pipeline.yaml -j 2 do_cal_t_MAD_forall
+        snakemake -s Snakefile --configfile test/test_cfDNA_pipeline.yaml -j 2 do_visualising_t_MAD_forall
+
+Do ichorCNA:
+
+        snakemake -s Snakefile --configfile test/test_cfDNA_pipeline.yaml -j 2 do_createPoN
+        snakemake -s Snakefile --configfile test/test_cfDNA_pipeline.yaml -j 2 do_ichorCNA
+        snakemake -s Snakefile --configfile test/test_cfDNA_pipeline.yaml -j 2 do_ichorCNA_results
+
 
 ### 4.4 Output:
 The pipeline outputs processed reads, alignment files (BAM files, BED files), and comprehensive quality control reports.

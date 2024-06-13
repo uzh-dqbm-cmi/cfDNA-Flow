@@ -34,8 +34,21 @@ library(devtools)
 devtools::install_github("asntech/QDNAseq.hg38@main")
 #
 # # CNAclinic; tMAD
-devtools::install_github("sdchandra/CNAclinic", build_vignettes = TRUE, dependencies=TRUE)
+#devtools::install_github("sdchandra/CNAclinic", build_vignettes = TRUE, dependencies=TRUE)
+#library(CNAclinic)
+
+
+
+# Install annotation packages
+source("https://bioconductor.org/biocLite.R")
+biocLite(c("org.Hs.eg.db", "TxDb.Hsapiens.UCSC.hg19.knownGene", "TxDb.Hsapiens.UCSC.hg38.knownGene", "QDNAseq.hg19"))
+# Installing CNAclinic
+install.packages("devtools")
+library(devtools)
+install_github("sdchandra/CNAclinic", build_vignettes = TRUE, dependencies=TRUE)
 library(CNAclinic)
+
+
 # # ichorCNA
 devtools::install_github("broadinstitute/ichorCNA")
 
