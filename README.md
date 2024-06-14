@@ -111,7 +111,9 @@ Outputs of features in 1Mb genomic bins can be found in the `results/BED/FalseD2
 Additional length features for every sample are stored in the folder `results/BED/FalseD25630` and have the following suffixes:
 
 `binned_lengths.csv` - each row contains information about the chromosome number, genomic bin number (1Mb wide), and the lengths of all cfDNA fragments corresponding to that bin
+
 `len.csv` - contains a single column listing the lengths of all cfDNA fragments derived from a sample
+
 `lenuniqcount.csv` - a two-column format representing the histogram of cfDNA fragment lengths along with their frequencies
 
 #### ichorCNA
