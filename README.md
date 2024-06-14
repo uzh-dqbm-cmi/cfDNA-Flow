@@ -106,7 +106,7 @@ Output of QC is stored in the `results/QC/FalseD25630/multiqc_data` folder. Spec
 The output of fragment length features is stored in the `results/feature/FalseD25630/global_length.tsv` file. Columns store fragment length features for each studied sample (rows).
 
 #### Coverage features and fragment lengths in 1Mb genomic bins
-Outputs of features in 1Mb genomic bins can be found in the `results/BED/FalseD25630` folder. Values for all the samples are stored in `medgeddf.csv` file. Values for each sample are stored in the files with suffix `binned.csv`.
+Outputs of features in 1Mb genomic bins can be found in the `results/BED/FalseD25630` folder. Values for all the samples are stored in `medgeddf.csv` file. Values for each individual sample are stored in the files with suffix `binned.csv`.
 
 Additional length features for every sample are stored in the folder `results/BED/FalseD25630` and have the following suffixes:
 
