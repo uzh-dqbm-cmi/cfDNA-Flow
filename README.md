@@ -72,10 +72,6 @@ If successful, rerun the command without the -np flag.
 Next, bed to process BED files, use:
 
         snakemake -s Snakefile --configfile test/test_cfDNA_pipeline.yaml -j 2 do_bedprocess
-        
-Do unique counts:
-
-        snakemake -s Snakefile --configfile test/test_cfDNA_pipeline.yaml -j 2 do_uniq_counts
 
 Do global length: 
 
@@ -95,7 +91,36 @@ Do ichorCNA:
         snakemake -s Snakefile --configfile test/test_cfDNA_pipeline.yaml -j 2 do_ichorCNA_results
 
 ### 4.4 Output:
-The pipeline outputs processed reads, alignment files (BAM files, BED files), and quality control reports.
+The pipeline outputs alignment files (BAM files, BED files), and quality control reports. Additionally, it outputs features described in section 3. Feature Extraction. 
+
+#### BAM files
+Processed BAM files of studied samples, accompanied by their .bai index files, are stored in the `results/BAM/FalseD25630` folder and have `.sortByCoord.bam` suffix. 
+
+#### BED files
+BED files are stored in the `results/BED/FalseD25630` folder. Those files store information about chromosome number, start and end positions of cfDNA fragments.
+
+#### Quality control reports
+Output of QC is stored in the `results/QC/FalseD25630/multiqc_data` folder. Specifically, `multiqc_report.html` file contains multiple the QC metrics: general statistics, Picard metrics (alignment summary, mean read length, mark duplicates, WGS coverage, WGS filtered bases), FastQC (sequence counts, sequence quality histograms and quality scores, per base sequence content, per sequence GC content, per base N content, sequence length distribution, sequence duplication levels, overrepresented sequences, adapter content, status checks).  
+
+#### Fragment length features
+The output of fragment length features is stored in the `results/feature/FalseD25630/global_length.tsv` file. Columns store fragment length features for each studied sample (rows).
+
+#### Coverage features and fragment lengths in 1Mb genomic bins
+Outputs of features in 1Mb genomic bins can be found in the `results/BED/FalseD25630` folder. Values for all the samples are stored in `medgeddf.csv` file. Values for each sample are stored in the files with suffix `binned.csv`.
+
+Additional length features for every sample are stored in the folder `results/BED/FalseD25630` and have the following suffixes:
+
+`binned_lengths.csv` - each row contains information about the chromosome number, genomic bin number (1Mb wide), and the lengths of all cfDNA fragments corresponding to that bin
+`len.csv` - contains a single column listing the lengths of all cfDNA fragments derived from a sample
+`lenuniqcount.csv` - a two-column format representing the histogram of cfDNA fragment lengths along with their frequencies
+
+#### ichorCNA
+Results of ichorCNA analysis can be found in the `results/feature/FalseD25630/ichorCNA` folder. For detailed ichorCNA output description see this [link](https://github.com/broadinstitute/ichorCNA/wiki/Output). Shortly, ichorCNA outputs tumor fraction estimates based on CNA analysis. Additionally, it outputs CNA plots representing log2 ratio copy number for each bin in the genome.
+
+![](https://github.com/uzh-dqbm-cmi/cfDNA-Flow/blob/main/ichorCNA_plot.png)
+
+#### tMAD
+The outputs of [tMAD analysis](https://github.com/sdchandra/tMAD) are stored in the `results/BED/FalseD25630/tMAD/tMAD_results.tsv` file. This file contains sample names and their corresponding tMAD values. 
 
 ## 5. Support
 For issues, questions, or contributions, please visit the cfDNA-Flow GitHub repository or contact the maintainers via email. 
