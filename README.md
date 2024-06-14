@@ -25,7 +25,7 @@ cfDNA-Flow offers fragment length analysis; calculating the mean, median, and st
 cfDNA-Flow utilizes two copy number analysis tools: ichorCNA (v0.2.0) and tMAD, to estimate copy number changes and tumor fraction.
 
 ### 3.3 Binned coverage 
-cfDNA-Flow splits the genome into 1-Mbp bins and counts the number of cfDNA fragments in each region. 
+cfDNA-Flow splits the genome into 1 Mbp bins and counts the number of cfDNA fragments in each region. 
 
 ### 3.4 Differential coverage analysis over DNase hypersensitivity sites
 This feature was calculated using [LIQUORICE](https://github.com/epigen/LIQUORICE/tree/master). Please note that the cfDNA-Flow pipeline does not integrate the LIQUORICE tool for detecting epigenetic signatures in cell-free DNA from liquid biopsies. However, you can find more information and access LIQUORICE through the following [link](https://liquorice.readthedocs.io/en/latest/).
@@ -104,12 +104,12 @@ Output of QC is stored in the `results/QC/FalseD25630/multiqc_data` folder. Spec
 #### Fragment length features
 The output of fragment length features is stored in the `results/feature/FalseD25630/global_length.tsv` file. Columns store fragment length features for each studied sample (rows).
 
-#### Coverage features and fragment lengths in 1Mb genomic bins
-Outputs of features in 1Mb genomic bins can be found in the `results/BED/FalseD25630` folder. Values for all the samples are stored in `medgeddf.csv` file. Values for each individual sample are stored in the files with suffix `binned.csv`.
+#### Coverage features and fragment lengths in 1 Mbp genomic bins
+Outputs of features in 1 Mbp genomic bins can be found in the `results/BED/FalseD25630` folder. Values for all the samples are stored in `medgeddf.csv` file. Values for each individual sample are stored in the files with suffix `binned.csv`.
 
 Additional length features for every sample are stored in the folder `results/BED/FalseD25630` and have the following suffixes:
 
-`binned_lengths.csv` - each row contains information about the chromosome number, genomic bin number (1Mb wide), and the lengths of all cfDNA fragments corresponding to that bin
+`binned_lengths.csv` - each row contains information about the chromosome number, genomic bin number (1 Mbp wide), and the lengths of all cfDNA fragments corresponding to that bin
 
 `len.csv` - contains a single column listing the lengths of all cfDNA fragments derived from a sample
 
