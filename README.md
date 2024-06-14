@@ -19,14 +19,13 @@ The pipeline uses the BWA software for alignment, followed by extensive post-ali
 ## 3. Feature Extraction
 
 ### 3.1 Fragment length features
-
 cfDNA-Flow offers fragment length analysis; calculating the mean, median, and standard deviation values for fragments sized 100 to 220 base pairs (bp), corresponding to the mononucleosomal size range. Additionally, cfDNA-Flow calculates the frequencies of cfDNA fragment sizes ranging from 70 bp to 1000 bp in 10 bp bins.
 
 ### 3.2 Copy number changes
 cfDNA-Flow utilizes two copy number analysis tools: ichorCNA (v0.2.0) and tMAD, to estimate copy number changes and tumor fraction.
 
-### 3.3 Normalized coverage
-cfDNA-Flow splits the genome into 1-Mbp bins and counts the number of fragments in each region. It then scales the 1-Mbp bin-wise fragment counts by dividing them by the average number of fragments across all bins. This scaled coverage is used to calculate Pearson’s correlation between healthy and cancer samples. When calculating the correlation of the coverage of a healthy sample to the average coverage of healthy samples, the given healthy sample is excluded from the average.
+### 3.3 Binned coverage 
+cfDNA-Flow splits the genome into 1-Mbp bins and counts the number of cfDNA fragments in each region. 
 
 ### 3.4 Differential coverage analysis over DNase hypersensitivity sites
 This feature was calculated using [LIQUORICE](https://github.com/epigen/LIQUORICE/tree/master). Please note that the cfDNA-Flow pipeline does not integrate the LIQUORICE tool for detecting epigenetic signatures in cell-free DNA from liquid biopsies. However, you can find more information and access LIQUORICE through the following [link](https://liquorice.readthedocs.io/en/latest/).
