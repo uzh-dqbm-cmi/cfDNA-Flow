@@ -4,4 +4,4 @@ These scripts use the code developed by Dineika Chandra published at https://git
 
 To this end, functions of CNAClinic are also used. https://github.com/sdchandra/CNAclinic 
 
-The code for these scripts were adapted by Siyuan Luo, Ivna Ivankovic and Zsolt Balázs
+The code for these scripts were adapted by Siyuan Luo, Ivna Ivankovic, Todor Gitchev and Zsolt Balázs
