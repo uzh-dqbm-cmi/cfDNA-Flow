@@ -53,6 +53,6 @@ rule bam_size_selection:
         temp = TEMP
     threads: THREADS
     shell: """
-        samtools view -h {input} | awk 'substr($0,1,1)=="@" || ($9>= {params.min} && $9<=220) || ($9<=-{params.min} && $9>=-{params.max})' | samtools view -b > {output.bam}
+        samtools view -h {input} | awk 'substr($0,1,1)=="@" || ($9>= {params.min} && $9<={params.max}) || ($9<=-{params.min} && $9>=-{params.max})' | samtools view -b > {output.bam}
         samtools index -@ {threads} {output.bam} {output.bai}
         """
