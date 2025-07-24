@@ -4,6 +4,9 @@ from distutils.util import strtobool
 global WORKDIR
 global GENOMEBIT
 global REFGENOME
+global REFGENOME_MAPPABILITY
+global BLACKLIST
+global ROI_LIST
 global PARAMDIR
 global SAMPLEDIR
 global ANNO_NAME
@@ -60,6 +63,21 @@ try:
 except:
 #    print("Missing 'temp' configuration parameter. error:", sys.exc_info()[0])
     TEMP = ""   # used defaults
+
+try:
+    REFGENOME_MAPPABILITY = config["refgenome_mappability"]
+except: # default
+    REFGENOME_MAPPABILITY = f"{REFGENOME}.mappability.bw"
+
+try:
+    BLACKLIST = config["blacklist"]
+except: # default
+    BLACKLIST = ""
+
+try:
+    ROI_LIST = config["roi_list"]
+except: # default
+    ROI_LIST = ""
 
 try:
     SEED = config["seed"]   # Set the seed of the random number generator, if you like to produce the same results.

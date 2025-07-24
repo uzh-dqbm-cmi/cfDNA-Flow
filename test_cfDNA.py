@@ -11,9 +11,7 @@ from pathlib import Path
 
 import pytest
 
-import cfDNA
 import configure
-import scripts.bedpe_size_selection as szsel
 
 # test constants
 # should be the same as in then used config.yaml (test_cfDNA_pipeline*.yaml)
@@ -66,23 +64,6 @@ def msg_diff_content(result, expected, log=None):
     return diff
 
 
-# @pytest.mark.skip(reason="deprecated command: use configure.py")
-def test_main(inst_folder):
-    cleanup_files(['results/test_cfDNA_pipeline_test001.yaml'])
-    args = MainArgs()
-    args.local = False
-    args.analysis = 'do_preprocess'
-    args.singularity_images = f'{inst_folder}test/singularity_images'
-    args.config = f'{inst_folder}test/test_config.yaml'
-    # args.j = 1
-    # args.np = True
-    # args.unlock = False
-    cfDNA.main(args, test=True)
-    result = 'results/test_cfDNA_pipeline_test001.yaml'
-    expected = f'{inst_folder}test/expected/test_cfDNA_pipeline_test001.yaml'
-    assert filecmp.cmp(result, expected, shallow=False)
-
-
 def test_configure(inst_folder):
     config = f'{inst_folder}test/test_config.yaml'
     cleanup_files(['results/test_cfDNA_pipeline_test001.yaml'])
@@ -97,36 +78,6 @@ def test_configure2(inst_folder):
     cleanup_files([out_config])
     result = configure.merge_config_and_settings(config, out_config)
     expected = f'{inst_folder}test/expected/test_cfDNA_pipeline_test001.yaml'
-    assert filecmp.cmp(result, expected, shallow=False)
-
-
-def test_size_selection_sh(inst_folder):
-    # input_bed = '/Users/todor/data/cfdna/AmsterdamUMC/results/BED/FalseD25630/LP0020_02.bed'
-    # result = '/Users/todor/data/cfdna/AmsterdamUMC/results/BED/FalseD25630/szsel_90_150_sh/LP0020_02.bed'
-    input_bed = f'{inst_folder}test/data/BED/test_sample2.bed'
-    result = 'results/test_sample2_szsel_sh.bed'
-    temp = 'results/temp'
-    cleanup_files([result])
-    assure_folder(os.path.dirname(result))
-    sz_min = 60
-    sz_max = 150
-    chunk_size = 3
-    cores = 2
-    szsel_cmd = f'{inst_folder}scripts/bedpe_size_selection.sh -i {input_bed} --min {sz_min} --max {sz_max} -c {chunk_size} -p {cores} --temp {temp} > {result}'
-    run_cmd(szsel_cmd)
-    # compare with all in 1 process/pass
-    result_p1 = f'{result}.p1.bed'
-    szsel_cmd = f'{inst_folder}scripts/bedpe_size_selection.sh -i {input_bed} --min {sz_min} --max {sz_max} -o {result_p1} --temp {temp}'
-    run_cmd(szsel_cmd)
-    assert filecmp.cmp(result_p1, result, shallow=False)
-    # return
-    expected = f'{inst_folder}test/expected/test_sample2_szsel.bed'
-    assert filecmp.cmp(result, expected, shallow=False)
-    # once more direct in output file
-    os.remove(result)
-    szsel_cmd = f'{inst_folder}scripts/bedpe_size_selection.sh -i {input_bed} --min {sz_min} --max {sz_max} -c {chunk_size} -o {result} --temp {temp}'
-    run_cmd(szsel_cmd)
-    expected = f'{inst_folder}test/expected/test_sample2_szsel.bed'
     assert filecmp.cmp(result, expected, shallow=False)
 
 

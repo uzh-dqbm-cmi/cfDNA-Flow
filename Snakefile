@@ -76,8 +76,12 @@ def print_config():
     print(f'control_RefName:{control_RefName}')
     print(f'treated_samples_RefName:{treated_samples_RefName}')
     print('Constants:')
-    print(f'GENOME={GENOME}')
+    print(f'GENOME(name)={GENOME}')
+    print(f'REFGENOME={REFGENOME}')
     print(f'CHROM_SIZES={CHROM_SIZES}')
+    print(f'REFGENOME_MAPPABILITY={REFGENOME_MAPPABILITY}')
+    print(f'BLACKLIST={BLACKLIST}')
+    print(f'ROI_LIST={ROI_LIST}')
     print(f'RC_NORMALIZATION={RC_NORMALIZATION}')
     print(f'hash_it={hash_it}')
     print(f'MIXED_MODEL_FILE_SUFF={MIXED_MODEL_FILE_SUFF}')
@@ -188,3 +192,17 @@ rule do_counts_sl_ratio:
     input:
         expand(WORKDIR + "/feature/" + PARAMDIR + "/length/{sample}_counts.tsv", sample=samples["sample_name"]),
         expand(WORKDIR + "/feature/" + PARAMDIR + "/length/{sample}_SLratio.tsv", sample=samples["sample_name"])
+
+rule do_LIQUORICE:
+    input:
+        WORKDIR + "/feature/" + PARAMDIR + "/liquorice/" + SIZE_SELECTION_SUB_FOLDER +"/summary_across_samples_and_ROIs.csv"
+
+# TODO complete the new rules:  do_FrEIA_preprocessing, do_FrEIA
+
+rule do_FrEIA_preprocessing:
+    input:
+        WORKDIR + "/feature/" + PARAMDIR + "/freia/" + SIZE_SELECTION_SUB_FOLDER +"/freia_preprocess.csv"
+
+rule do_FrEIA:
+    input:
+        WORKDIR + "/feature/" + PARAMDIR + "/freia/" + SIZE_SELECTION_SUB_FOLDER +"/freia_results.csv"

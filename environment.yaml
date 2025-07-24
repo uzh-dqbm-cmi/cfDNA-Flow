@@ -1,4 +1,4 @@
-name: cfDNA_pipeline
+name: cfDNA-Flow
 channels:
   - defaults
   - conda-forge
