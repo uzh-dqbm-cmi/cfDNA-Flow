@@ -1,0 +1,24 @@
+name: FrEIA
+prefix: ~/miniconda3/envs/FrEIA
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - biopython=1.78
+  - fastparquet=0.5
+  - logomaker=0.8
+  - mpmath=1.1.0
+  - numpy=1.18.5
+  - pandas=1.1.5
+  - patsy=0.5.1
+  - pip=21.0.1
+  - pip:
+    - statannot
+    - combat
+  - pysam=0.16.0.1
+  - python=3.8
+  - samtools=1.12
+  - scikit-learn=0.24.1
+  - scikit-bio=0.5.6
+  - seaborn
+  - umap-learn
