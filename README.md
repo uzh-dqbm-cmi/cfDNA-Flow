@@ -31,6 +31,11 @@ These features are calculated using [LIQUORICE](https://github.com/epigen/LIQUOR
 To use the cfDNA-Flow, follow these steps:
 
 ### 4.1 Installation:
+System dependencies:
+- libgit2
+
+    brew install libgit2
+
 Clone the cfDNA-Flow repository from GitHub to your local machine.
 
         git clone https://github.com/uzh-dqbm-cmi/cfDNA-Flow.git
