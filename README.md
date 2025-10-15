@@ -93,6 +93,14 @@ Do ichorCNA:
 
 Do LIQUORICE:
 
+To run this rule you need to clone the script file `scripts/LIQUORICE_include.TEMPLATE.sh` as `LIQUORICE_include.sh?, update it according to your environment (using Docker or Singularity image), and add the following line, with the correct 'path' to your .bashrc , or .zshrc :
+```
+source /path/LIQUORICE_include.sh
+```
+Test the setup with the command `LIQUORICE --help`
+
+Afterward, you should be able to call the pipeline rule:
+
         snakemake -s Snakefile --configfile test/test_cfDNA_pipeline.yaml -j 2 do_LIQUORICE
 
 Do FreIA:
