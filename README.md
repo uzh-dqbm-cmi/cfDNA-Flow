@@ -97,7 +97,10 @@ To run this rule you need to clone the script file `scripts/LIQUORICE_include.TE
 ```
 source /path/LIQUORICE_include.sh
 ```
-Test the setup with the command `LIQUORICE --help`
+
+To get a Docker image you can use the command `docker pull peneder/liquorice`, or for Singularity `singularity pull liquorice.sif docker://peneder/liquorice`
+
+Test the setup with the command `LIQUORICE --help`.
 
 Afterward, you should be able to call the pipeline rule:
 
