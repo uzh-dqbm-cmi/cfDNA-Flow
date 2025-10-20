@@ -1,5 +1,6 @@
 BootStrap: docker
 From: togop/dna_toolbox:latest
+# source https://github.com/uzh-dqbm-cmi/singularity_recipes/blob/main/bioinformatics/dna_toolbox.def
 #From: bioconductor/bioconductor_docker:devel
 
 %files

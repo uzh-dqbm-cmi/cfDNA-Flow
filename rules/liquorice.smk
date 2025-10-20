@@ -12,12 +12,13 @@ global ROI_LIST
 global CONTROL_SAMPLES
 global TEMP
 global samples
+global roi_names
 
 rule LIQUORICE:
     input:
         bam=WORKDIR + "/BAM/" + PARAMDIR + "/" + SIZE_SELECTION_SUB_FOLDER + "{sample}.sortByCoord.bam"
     output:
-        WORKDIR + "/feature/" + PARAMDIR + "/liquorice/" + SIZE_SELECTION_SUB_FOLDER+"{sample}/*/fitted_gaussians.pdf"
+        WORKDIR + "/feature/" + PARAMDIR + "/liquorice/" + SIZE_SELECTION_SUB_FOLDER+"{sample}.sortByCoord/{roi}/fitted_gaussians.pdf"
     wildcard_constraints:
         min="\d+",
         max="\d+",
@@ -30,7 +31,8 @@ rule LIQUORICE:
         n_cpus = THREADS,
         out_dir = WORKDIR + "/feature/" + PARAMDIR + "/liquorice/" + SIZE_SELECTION_SUB_FOLDER
     shell: """
-        LIQUORICE --bamfile "{input.bam}" \
+        mkdir -p {params.out_dir} 
+        cd {params.out_dir} && LIQUORICE --bamfile "{input.bam}" \
             --refgenome_fasta "{params.refgenome_fasta}" \
             --mappability_bigwig "{params.mappability_bigwig}" \
             --bedpathlist {params.bedpathlist} \
@@ -41,8 +43,8 @@ rule LIQUORICE:
 
 rule LIQUORICE_summary:
     input:
-        expand(WORKDIR + "/feature/" + PARAMDIR + "/liquorice/" + SIZE_SELECTION_SUB_FOLDER+"{sample}/*/fitted_gaussians.pdf",
-            sample = samples['sample_name'].values)
+        expand(WORKDIR + "/feature/" + PARAMDIR + "/liquorice/" + SIZE_SELECTION_SUB_FOLDER+"{sample}.sortByCoord/{roi}/fitted_gaussians.pdf",
+            sample = samples['sample_name'].values, roi=roi_names)
     output:
         WORKDIR + "/feature/" + PARAMDIR + "/liquorice/" + SIZE_SELECTION_SUB_FOLDER +"summary_across_samples_and_ROIs.csv"
     wildcard_constraints:

@@ -23,3 +23,7 @@ function LIQUORICE_summary(){
 #  singularity exec -H $HOME -B $PWD $LIQUORICE_IMG LIQUORICE_summary "$@"
   docker run --rm -v $PWD:$PWD $LIQUORICE_IMG LIQUORICE_summary "$@"
 }
+
+declare -x -f LIQUORICE
+declare -x -f LIQUORICE_summary
+
