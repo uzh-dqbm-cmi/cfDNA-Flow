@@ -5,6 +5,7 @@ include: "rules/03_clean_bams.smk"
 include: "rules/04_bam_to_bed.smk"
 include: "rules/05_feature_extract.smk"
 include: "rules/ichor_cna.smk"
+include: "rules/liquorice.smk"
 
 global WORKDIR
 global GENOMEBIT
@@ -195,14 +196,14 @@ rule do_counts_sl_ratio:
 
 rule do_LIQUORICE:
     input:
-        WORKDIR + "/feature/" + PARAMDIR + "/liquorice/" + SIZE_SELECTION_SUB_FOLDER +"/summary_across_samples_and_ROIs.csv"
+        WORKDIR + "/feature/" + PARAMDIR + "/liquorice/" + SIZE_SELECTION_SUB_FOLDER +"summary_across_samples_and_ROIs.csv"
 
 # TODO complete the new rules:  do_FrEIA_preprocessing, do_FrEIA
 
 rule do_FrEIA_preprocessing:
     input:
-        WORKDIR + "/feature/" + PARAMDIR + "/freia/" + SIZE_SELECTION_SUB_FOLDER +"/freia_preprocess.csv"
+        WORKDIR + "/feature/" + PARAMDIR + "/freia/" + SIZE_SELECTION_SUB_FOLDER +"freia_preprocess.csv"
 
 rule do_FrEIA:
     input:
-        WORKDIR + "/feature/" + PARAMDIR + "/freia/" + SIZE_SELECTION_SUB_FOLDER +"/freia_results.csv"
+        WORKDIR + "/feature/" + PARAMDIR + "/freia/" + SIZE_SELECTION_SUB_FOLDER +"freia_results.csv"

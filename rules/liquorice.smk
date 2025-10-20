@@ -1,5 +1,3 @@
-from rules.config import ROI_LIST
-
 include: "common.smk"
 
 global WORKDIR
@@ -13,16 +11,13 @@ global BLACKLIST
 global ROI_LIST
 global CONTROL_SAMPLES
 global TEMP
+global samples
 
 rule LIQUORICE:
     input:
-        bai = WORKDIR + "/BAM/" + PARAMDIR + "/"+SIZE_SELECTION_SUB_FOLDER+"{sample}.sortByCoord.bam.bai",
         bam=WORKDIR + "/BAM/" + PARAMDIR + "/" + SIZE_SELECTION_SUB_FOLDER + "{sample}.sortByCoord.bam"
     output:
-        expand(WORKDIR + "/feature/" + PARAMDIR + "/liquorice/" + SIZE_SELECTION_SUB_FOLDER+"/{sample}/*/fitted_gaussians.pdf",
-            sample = samples_df['sample_name'].values)
-    workdir:
-        WORKDIR + "/feature/" + PARAMDIR + "/liquorice/" + SIZE_SELECTION_SUB_FOLDER
+        WORKDIR + "/feature/" + PARAMDIR + "/liquorice/" + SIZE_SELECTION_SUB_FOLDER+"{sample}/*/fitted_gaussians.pdf"
     wildcard_constraints:
         min="\d+",
         max="\d+",
@@ -36,22 +31,20 @@ rule LIQUORICE:
         out_dir = WORKDIR + "/feature/" + PARAMDIR + "/liquorice/" + SIZE_SELECTION_SUB_FOLDER
     shell: """
         LIQUORICE --bamfile "{input.bam}" \
-            --refgenome_fasta "{refgenome_fasta}" \
-            --mappability_bigwig "{mappability_bigwig}" \
-            --bedpathlist {bedpathlist} \
-            --blacklist {blacklist} \
-            --n_cpus {n_cpus}
+            --refgenome_fasta "{params.refgenome_fasta}" \
+            --mappability_bigwig "{params.mappability_bigwig}" \
+            --bedpathlist {params.bedpathlist} \
+            --blacklist {params.blacklist} \
+            --n_cpus {params.n_cpus}
         """
 
 
 rule LIQUORICE_summary:
     input:
-        expand(WORKDIR + "/feature/" + PARAMDIR + "/liquorice/" + SIZE_SELECTION_SUB_FOLDER+"/{sample}/*/fitted_gaussians.pdf",
-            sample = samples_df['sample_name'].values)
+        expand(WORKDIR + "/feature/" + PARAMDIR + "/liquorice/" + SIZE_SELECTION_SUB_FOLDER+"{sample}/*/fitted_gaussians.pdf",
+            sample = samples['sample_name'].values)
     output:
-        WORKDIR + "/feature/" + PARAMDIR + "/liquorice/" + SIZE_SELECTION_SUB_FOLDER +"/summary_across_samples_and_ROIs.csv"
-    workdir:
-        WORKDIR + "/feature/" + PARAMDIR + "/liquorice/" + SIZE_SELECTION_SUB_FOLDER
+        WORKDIR + "/feature/" + PARAMDIR + "/liquorice/" + SIZE_SELECTION_SUB_FOLDER +"summary_across_samples_and_ROIs.csv"
     wildcard_constraints:
         min="\d+",
         max="\d+",
@@ -62,7 +55,7 @@ rule LIQUORICE_summary:
         out_dir= WORKDIR + "/feature/" + PARAMDIR + "/liquorice/" + SIZE_SELECTION_SUB_FOLDER
     threads: THREADS
     shell: """
-        LIQUORICE_summary --tmpdir {temp} --control_name_list {controls}
+        LIQUORICE_summary --tmpdir {params.temp} --control_name_list {params.controls} --dirname {params.out_dir}
         """
 
 

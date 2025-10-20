@@ -3,7 +3,6 @@ include: "config.smk"
 import numpy as np
 import pandas as pd
 import re
-from snakemake.remote import FTP
 from snakemake.utils import validate
 
 global CONTROL_SAMPLES
@@ -16,8 +15,6 @@ global control_RefName
 global treated_samples
 global treated_samples_names
 global treated_samples_RefName
-
-ftp = FTP.RemoteProvider()
 
 
 samples = (
