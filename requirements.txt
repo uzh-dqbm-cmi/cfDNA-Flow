@@ -26,9 +26,9 @@ bx-python
 joblib
 scipy
 statsmodels
-bismark
-bedops          # bedmap, sort-bed
-bowtie2
+# bismark
+# bedops          # bedmap, sort-bed
+# bowtie2
 samblaster  # probably using older samtools
 biopython
 logomaker
