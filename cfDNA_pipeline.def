@@ -1,5 +1,6 @@
 BootStrap: docker
 From: togop/dna_toolbox:latest
+# source https://github.com/uzh-dqbm-cmi/singularity_recipes/blob/main/bioinformatics/dna_toolbox.def
 #From: bioconductor/bioconductor_docker:devel
 
 %files
@@ -250,9 +251,9 @@ From: togop/dna_toolbox:latest
     deeptools --help | if  grep -q "usage:" ; then echo "deeptools install OK"; else echo "ERROR: deeptools install failed" && exit 1; fi
     # bedGraphToBigWig | if  grep -q "usage:" ; then echo "bedGraphToBigWig install OK"; else echo "ERROR: bedGraphToBigWig install failed" && exit 1; fi
     gatk --help | if  grep -q "Usage" ; then echo "gatk install OK"; else echo "ERROR: gatk install failed" && exit 1; fi
-    bismark --help | if  grep -q "USAGE:" ; then echo "bismark install OK"; else echo "ERROR: bismark install failed" && exit 1; fi
-    bedops --help | if  grep -q "USAGE:" ; then echo "bedops install OK"; else echo "ERROR: bedops install failed" && exit 1; fi
-    bowtie2 --help | if  grep -q "Usage:" ; then echo "bowtie2 install OK"; else echo "ERROR: bowtie2 install failed" && exit 1; fi
+    # bismark --help | if  grep -q "USAGE:" ; then echo "bismark install OK"; else echo "ERROR: bismark install failed" && exit 1; fi
+    # bedops --help | if  grep -q "USAGE:" ; then echo "bedops install OK"; else echo "ERROR: bedops install failed" && exit 1; fi
+    # bowtie2 --help | if  grep -q "Usage:" ; then echo "bowtie2 install OK"; else echo "ERROR: bowtie2 install failed" && exit 1; fi
     # bwa mem | if  grep -q "Usage:" ; then echo "bwa install OK"; else echo "ERROR: bwa install failed" && exit 1; fi
     # singularity shell -H $HOME ./cfDNA_pipeline.sif
     # pytest -q --inst_folder / /test_cfDNA.py

@@ -3,21 +3,21 @@ include: "config.smk"
 import numpy as np
 import pandas as pd
 import re
-from snakemake.remote import FTP
+import os
 from snakemake.utils import validate
 
 global CONTROL_SAMPLES
 global WORKDIR
+global ROI_LIST
 global hash_it
 
 global samples
+global roi_names
 global control_samples
 global control_RefName
 global treated_samples
 global treated_samples_names
 global treated_samples_RefName
-
-ftp = FTP.RemoteProvider()
 
 
 samples = (
@@ -28,6 +28,7 @@ samples = (
 
 validate(samples, schema="schemas/samples.schema.yaml")
 
+roi_names=[os.path.splitext(os.path.basename(path))[0] for path in ROI_LIST.split()]
 
 import pandas as pd
 from hashlib import md5

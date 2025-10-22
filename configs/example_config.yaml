@@ -27,6 +27,10 @@ bwa_algorithm: aln #mem, aln
 #refGenome: /cluster/home/ivivna/exomeseq_ivna/resources/GCA_000001405.15_GRCh38_no_alt_analysis_set.fna.gz
 refGenome: /cluster/dataset/medinfmk/cfDNA-radiooncology/resources/resources_broad_hg38_v0_Homo_sapiens_assembly38.fasta
 
+# used by LIQUORICE
+refgenome_mappability: /cluster/dataset/medinfmk/cfDNA-radiooncology/resources/hg38.fa.mappability_150bp_0212.bw
+roi_list: "/cluster/work/medinfmk/ref_genomes/roi/SAEC_hg38.bed" "/cluster/work/medinfmk/ref_genomes/roi/hematopoietic_specific_liquorice_hg38.bed"
+
 ####################################################################
 
 # ALIGNMENT FILTERING
