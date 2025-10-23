@@ -62,6 +62,7 @@ The configuration file, `test_cfDNA_pipeline.yaml`, is used to specify the input
 Settings for this demo are as follows: reads are trimmed, reference genome is hg38, mapping quality is 30, [SAM flag](https://broadinstitute.github.io/picard/explain-flags.html) is 40, CIGAR string is D. 
 
 ### 4.3 Execution/Demo:
+To run all following commands you have to be in the root folder of the cloned code repository `cfDNA-Flow` (see above).
 To start preprocessing, execute the following command. Use the -np flag for a dry run to verify everything works correctly.
 
         snakemake -s Snakefile --configfile test/test_cfDNA_pipeline.yaml -j 2 do_preprocess -np 
@@ -116,21 +117,21 @@ Do FreIA:
 The pipeline outputs alignment files (BAM files, BED files), and quality control reports. Additionally, it outputs features described above. 
 
 #### BAM files
-Processed BAM files of studied samples, accompanied by their .bai index files, are stored in the `results/BAM/0memhg19False40` folder and have `.sortByCoord.bam` suffix. 
+Processed BAM files of studied samples, accompanied by their .bai index files, are stored in the `results/BAM` folder and have `.sortByCoord.bam` suffix. 
 
 #### BED files
-BED files are stored in the `results/BED/0memhg19False40` folder. Those files store information about chromosome number, start and end positions of cfDNA fragments.
+BED files are stored in the `results/BED` folder. Those files store information about chromosome number, start and end positions of cfDNA fragments.
 
 #### Quality control reports
-Output of QC is stored in the `results/QC/0memhg19False40/multiqc_data` folder. Specifically, `multiqc_report.html` file contains multiple the QC metrics: general statistics, Picard metrics (alignment summary, mean read length, mark duplicates, WGS coverage, WGS filtered bases), FastQC (sequence counts, sequence quality histograms and quality scores, per base sequence content, per sequence GC content, per base N content, sequence length distribution, sequence duplication levels, overrepresented sequences, adapter content, status checks).  
+Output of QC is stored in the `results/QC/multiqc_data` folder. Specifically, `multiqc_report.html` file contains multiple the QC metrics: general statistics, Picard metrics (alignment summary, mean read length, mark duplicates, WGS coverage, WGS filtered bases), FastQC (sequence counts, sequence quality histograms and quality scores, per base sequence content, per sequence GC content, per base N content, sequence length distribution, sequence duplication levels, overrepresented sequences, adapter content, status checks).  
 
 #### Fragment length features
-The output of fragment length features is stored in the `results/feature/0memhg19False40/global_length.tsv` file. Columns store fragment length features for each studied sample (rows).
+The output of fragment length features is stored in the `results/feature/global_length.tsv` file. Columns store fragment length features for each studied sample (rows).
 
 #### Coverage features and fragment lengths in 1 Mbp genomic bins
-Outputs of features in 1 Mbp genomic bins can be found in the `results/BED/0memhg19False40` folder. Values for all the samples are stored in `mergeddf.csv` file. Values for each individual sample are stored in the files with suffix `binned.csv`.
+Outputs of features in 1 Mbp genomic bins can be found in the `results/BED` folder. Values for all the samples are stored in `mergeddf.csv` file. Values for each individual sample are stored in the files with suffix `binned.csv`.
 
-Additional length features for every sample are stored in the folder `results/BED/0memhg19False40` and have the following suffixes:
+Additional length features for every sample are stored in the folder `results/BED` and have the following suffixes:
 
 `binned_lengths.csv` - each row contains information about the chromosome number, genomic bin number (1 Mbp wide), and the lengths of all cfDNA fragments corresponding to that bin
 
@@ -139,16 +140,16 @@ Additional length features for every sample are stored in the folder `results/BE
 `lenuniqcount.csv` - a two-column format representing the histogram of cfDNA fragment lengths along with their frequencies
 
 #### ichorCNA
-Results of ichorCNA analysis can be found in the `results/feature/0memhg19False40/ichorCNA` folder. For detailed ichorCNA output description see this [link](https://github.com/broadinstitute/ichorCNA/wiki/Output). Shortly, ichorCNA outputs tumor fraction estimates based on CNA analysis. Additionally, it outputs CNA plots representing log2 ratio copy number for each bin in the genome.
+Results of ichorCNA analysis can be found in the `results/feature/ichorCNA` folder. For detailed ichorCNA output description see this [link](https://github.com/broadinstitute/ichorCNA/wiki/Output). Shortly, ichorCNA outputs tumor fraction estimates based on CNA analysis. Additionally, it outputs CNA plots representing log2 ratio copy number for each bin in the genome.
 
 #### tMAD
-The outputs of tMAD are stored in the `results/BED/0memhg19False40/tMAD/tMAD_results.tsv` file. This file contains sample names and their corresponding tMAD values. 
+The outputs of tMAD are stored in the `results/BED/tMAD/tMAD_results.tsv` file. This file contains sample names and their corresponding tMAD values. 
 
 #### LIQUORICE
-The outputs of LIQUORICE are stored in the `results/BED/0memhg19False40/LIQUORICE/summary_across_samples_and_ROIS.csv` file. This file contains sample names and their corresponding Dip depth and Dip area values after z-scaling. We recommend using the dip depth values, as we found them most informative. 
+The outputs of LIQUORICE are stored in the `results/BED/feature/liquorice/summary_across_samples_and_ROIS.csv` file. This file contains sample names and their corresponding Dip depth and Dip area values after z-scaling. We recommend using the dip depth values, as we found them most informative. 
 
 #### FrEIA
-The outputs of FrEIA are stored in the `results/BED/0memhg19False40/FrEIA/0memhg19False40_FrEIA_score.csv` file. This file contains sample names and their corresponding tMAD values. 
+The outputs of FrEIA are stored in the `results/feature/FrEIA/trimmed/4_FrEIA/5_FrEIA_score/<paramDir_name>_FrEIA_score.csv` file. This file contains sample names and their corresponding tMAD values. 
 
 ## 5. Support
 With issues or questions, please contact the maintainers. 
