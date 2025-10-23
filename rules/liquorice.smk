@@ -9,10 +9,13 @@ global REFGENOME
 global REFGENOME_MAPPABILITY
 global BLACKLIST
 global ROI_LIST
-global CONTROL_SAMPLES
 global TEMP
 global samples
+global control_samples
 global roi_names
+
+
+controls_sortByCoord = " ".join([f"{item}.sortByCoord" for item in control_samples[0].tolist()])
 
 rule LIQUORICE:
     input:
@@ -46,18 +49,17 @@ rule LIQUORICE_summary:
         expand(WORKDIR + "/feature/" + PARAMDIR + "/liquorice/" + SIZE_SELECTION_SUB_FOLDER+"{sample}.sortByCoord/{roi}/fitted_gaussians.pdf",
             sample = samples['sample_name'].values, roi=roi_names)
     output:
-        WORKDIR + "/feature/" + PARAMDIR + "/liquorice/" + SIZE_SELECTION_SUB_FOLDER +"summary_across_samples_and_ROIs.csv"
+        WORKDIR + "/feature/" + PARAMDIR + "/liquorice/" + SIZE_SELECTION_SUB_FOLDER +"summary_across_samples_and_ROIS.csv"
     wildcard_constraints:
         min="\d+",
         max="\d+",
         sample="[^/]+"
     params:
-        temp = TEMP,
-        controls = CONTROL_SAMPLES,
+        controls = controls_sortByCoord,
         out_dir= WORKDIR + "/feature/" + PARAMDIR + "/liquorice/" + SIZE_SELECTION_SUB_FOLDER
     threads: THREADS
     shell: """
-        LIQUORICE_summary --tmpdir {params.temp} --control_name_list {params.controls} --dirname {params.out_dir}
+        cd {params.out_dir} && LIQUORICE_summary --control_name_list {params.controls} --dirname {params.out_dir}
         """
 
 

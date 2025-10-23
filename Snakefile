@@ -196,7 +196,7 @@ rule do_counts_sl_ratio:
 
 rule do_LIQUORICE:
     input:
-        WORKDIR + "/feature/" + PARAMDIR + "/liquorice/" + SIZE_SELECTION_SUB_FOLDER +"summary_across_samples_and_ROIs.csv"
+        WORKDIR + "/feature/" + PARAMDIR + "/liquorice/" + SIZE_SELECTION_SUB_FOLDER +"summary_across_samples_and_ROIS.csv"
 
 # TODO complete the new rules:  do_FrEIA_preprocessing, do_FrEIA
 
